@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F8DAA4B32AB8D5B100E04645 /* ITunesDomenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DAA4B22AB8D5B100E04645 /* ITunesDomenModel.swift */; };
+		F8DAA4B32AB8D5B100E04645 /* ITunesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DAA4B22AB8D5B100E04645 /* ITunesDataModel.swift */; };
 		F8DAA4B62AB8D63300E04645 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DAA4B52AB8D63300E04645 /* SearchService.swift */; };
 		F8DAA4BA2AB8E83200E04645 /* RequestsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8DAA4B92AB8E83200E04645 /* RequestsLoader.swift */; };
 		F8E37BF22AB8C24C00DC04D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E37BF12AB8C24C00DC04D3 /* AppDelegate.swift */; };
@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F8DAA4B22AB8D5B100E04645 /* ITunesDomenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesDomenModel.swift; sourceTree = "<group>"; };
+		F8DAA4B22AB8D5B100E04645 /* ITunesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesDataModel.swift; sourceTree = "<group>"; };
 		F8DAA4B52AB8D63300E04645 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		F8DAA4B92AB8E83200E04645 /* RequestsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsLoader.swift; sourceTree = "<group>"; };
 		F8E37BEE2AB8C24C00DC04D3 /* AppStoreSearch_NewConcurrency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreSearch_NewConcurrency.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,14 +49,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F8DAA4B12AB8D59600E04645 /* DomenModel */ = {
-			isa = PBXGroup;
-			children = (
-				F8DAA4B22AB8D5B100E04645 /* ITunesDomenModel.swift */,
-			);
-			path = DomenModel;
-			sourceTree = "<group>";
-		};
 		F8DAA4B42AB8D62200E04645 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,17 +61,57 @@
 		F8DAA4B72AB8D68200E04645 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F8DAA4B82AB8D68F00E04645 /* SearchModule */,
+				F8DAA4B82AB8D68F00E04645 /* Search */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		F8DAA4B82AB8D68F00E04645 /* SearchModule */ = {
+		F8DAA4B82AB8D68F00E04645 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F8DAA4BE2AB9D53A00E04645 /* Module */,
+				F8DAA4BB2AB9D50F00E04645 /* Presenter */,
+				F8DAA4BC2AB9D51600E04645 /* Model */,
+				F8DAA4BD2AB9D52100E04645 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F8DAA4BB2AB9D50F00E04645 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F8DAA4BC2AB9D51600E04645 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F8DAA4BD2AB9D52100E04645 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				F8E37BF52AB8C24C00DC04D3 /* ViewController.swift */,
 			);
-			path = SearchModule;
+			path = View;
+			sourceTree = "<group>";
+		};
+		F8DAA4BE2AB9D53A00E04645 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		F8DAA4BF2AB9D72600E04645 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F8DAA4B22AB8D5B100E04645 /* ITunesDataModel.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 		F8E37BE52AB8C24C00DC04D3 = {
@@ -133,6 +165,7 @@
 				F8E37C0F2AB8C40500DC04D3 /* Support */,
 				F8E37C152AB8C6D100DC04D3 /* Requests */,
 				F8DAA4B42AB8D62200E04645 /* Services */,
+				F8DAA4BF2AB9D72600E04645 /* DataModel */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -159,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				F8E37C112AB8C4DC00DC04D3 /* AppConstants.swift */,
-				F8DAA4B12AB8D59600E04645 /* DomenModel */,
 				F8E37C062AB8C29A00DC04D3 /* Assets */,
 			);
 			path = Resources;
@@ -250,7 +282,7 @@
 				F8DAA4BA2AB8E83200E04645 /* RequestsLoader.swift in Sources */,
 				F8E37C0C2AB8C3B000DC04D3 /* URLRequestConvertibleType.swift in Sources */,
 				F8E37C092AB8C2DB00DC04D3 /* Requests.swift in Sources */,
-				F8DAA4B32AB8D5B100E04645 /* ITunesDomenModel.swift in Sources */,
+				F8DAA4B32AB8D5B100E04645 /* ITunesDataModel.swift in Sources */,
 				F8E37C122AB8C4DC00DC04D3 /* AppConstants.swift in Sources */,
 				F8E37C0E2AB8C3EB00DC04D3 /* URLRequestType.swift in Sources */,
 			);

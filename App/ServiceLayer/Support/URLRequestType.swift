@@ -8,8 +8,28 @@
 import Foundation
 
 protocol URLRequestType {
-    var baseUrl: String { get }
+    var scheme: String { get }
+    var host: String { get }
     var path: String { get }
     var method: String { get }
-    var parameters: [URLQueryItem] { get }
+    var parameters: [URLQueryItem]? { get }
+    var headers: [String: String]? { get }
+}
+
+extension URLRequestType {
+    var scheme: String {
+        return "https"
+    }
+    
+    var host: String {
+        return AppConstants.baseHost
+    }
+    
+    var parameters: [URLQueryItem]? {
+        return []
+    }
+    
+    var header: [String: String]? {
+        return [:]
+    }
 }

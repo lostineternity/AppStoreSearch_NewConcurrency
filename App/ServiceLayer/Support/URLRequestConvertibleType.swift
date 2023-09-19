@@ -13,15 +13,19 @@ protocol URLRequestConvertibleType {
 
 extension URLRequestConvertibleType where Self: URLRequestType {
     func asURLRequest() throws -> URLRequest {
-        var urlComponents = URLComponents(string: AppConstants.baseURL)
-        urlComponents?.path = path
-        urlComponents?.queryItems?.append(contentsOf: parameters)
+        var urlComponents = URLComponents()
+        urlComponents.scheme = scheme
+        urlComponents.host = host
+        urlComponents.path = path
+        urlComponents.queryItems?.append(contentsOf: parameters ?? [])
         
-        guard let url = urlComponents?.url else {
-            throw AppError.badURL(info: urlComponents?.string ?? "unknown url")
+        guard let url = urlComponents.url else {
+            throw AppError.badURL(info: urlComponents.string ?? "unknown url")
         }
         
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.allHTTPHeaderFields = headers
         
         return request
     }

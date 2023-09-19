@@ -8,5 +8,5 @@
 import Foundation
 
 enum AppConstants {
-    static let baseURL = ""
+    static let baseHost = "itunes.apple.com"
 }

@@ -12,14 +12,6 @@ enum Requests: URLRequestType, URLRequestConvertibleType {
 }
 
 extension Requests {
-    var baseUrl: String {
-        switch self {
-        case .getData:
-            return ""
-        default: return ""
-        }
-    }
-    
     var path: String {
         switch self {
         case .getData:
@@ -36,7 +28,7 @@ extension Requests {
         }
     }
     
-    var parameters: [URLQueryItem] {
+    var parameters: [URLQueryItem]? {
         switch self {
         case .getData:
             return []
