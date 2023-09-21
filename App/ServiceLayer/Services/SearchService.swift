@@ -8,16 +8,19 @@
 import Foundation
 
 protocol SearchServiceType {
-    func search() async throws -> [ITunesSearchResultItem]
+    func search() async -> [ITunesSearchResultItem]?
 }
 
 actor SearchService: SearchServiceType {
-    private let loader = RequestLoader()
-    
-    func search() async throws -> [ITunesSearchResultItem] {
-        let data = try await loader.perform(Requests.getData)
-        let decodedData = try JSONDecoder().decode(ITunesSearchResult.self, from: data)
-        
-        return decodedData.results
+    func search() async -> [ITunesSearchResultItem]? {
+        let result = await RequestLoader.perform(Requests.getData, to: ITunesSearchResult.self)
+        switch result {
+        case .success(let decodedData):
+            return decodedData.results
+        case .failure(let error):
+            print(error.localizedDescription)
+            return nil
+        }
     }
 }
+

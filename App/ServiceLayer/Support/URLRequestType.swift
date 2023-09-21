@@ -29,7 +29,7 @@ extension URLRequestType {
         return []
     }
     
-    var header: [String: String]? {
+    var headers: [String: String]? {
         return [:]
     }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct ITunesSearchResult: Decodable {
+struct ITunesSearchResult: Codable {
     let results: [ITunesSearchResultItem]
 }
 
-struct ITunesSearchResultItem: Decodable {
+struct ITunesSearchResultItem: Codable {
     let trackName: String
     let trackId: Int
     let bundleId: String

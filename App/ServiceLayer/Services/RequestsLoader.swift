@@ -12,15 +12,20 @@ protocol RequestLoaderType {
 }
 
 struct RequestLoader: RequestLoaderType {
-    static func perform<T: Codable>(_ request: URLRequestConvertibleType, to type: T.Type) async -> Result<T, Error> {
+    static let session = URLSession.shared
+    
+    static func perform<T: Codable>(_ request: URLRequestConvertibleType, to type: T.Type) async -> Result<T, Error> where T: Codable {
         do {
             let request = try request.asURLRequest()
             
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await session.data(for: request)
             
-            guard let response = response as? HTTPURLResponse,
-                  (200..<300).contains(response.statusCode) else {
-                return .failure(AppError.badResponse)
+            guard let response = response as? HTTPURLResponse else {
+                return .failure(AppError.noResponse)
+            }
+            
+            guard (200..<300).contains(response.statusCode) else {
+                return .failure(AppError.badResponse(statusCode: response.statusCode))
             }
 
             guard let decodedData = try? JSONDecoder().decode(type, from: data) else {
